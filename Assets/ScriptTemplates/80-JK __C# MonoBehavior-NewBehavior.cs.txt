@@ -1,0 +1,25 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+namespace #NAMESPACE#
+{
+    public class #SCRIPTNAME# : MonoBehaviour
+    {
+        #region Inspector
+
+        #NOTRIM#
+
+        #endregion
+
+        private void Start()
+        {
+            #NOTRIM#
+        }
+    }
+    
+    [Serializable]
+    public class UnityEvent#SCRIPTNAME# : UnityEvent<#SCRIPTNAME#> { }
+}
