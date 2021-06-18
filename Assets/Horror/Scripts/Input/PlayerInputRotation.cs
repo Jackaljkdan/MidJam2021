@@ -12,6 +12,8 @@ namespace Horror
 
         public float rotationSpeed;
 
+        public Vector3 euler;
+
         #endregion
 
         private void Start()
@@ -25,7 +27,16 @@ namespace Horror
             float upDownRotation = UnityEngine.Input.GetAxis("Mouse Y");
 
             transform.RotateAround(transform.position, Vector3.up, leftRightRotation * rotationSpeed);
-            transform.RotateAround(transform.position, transform.right, - upDownRotation * rotationSpeed);
+
+            euler = transform.localEulerAngles;
+            euler.x += -upDownRotation * rotationSpeed;
+
+            if (euler.x > 180)
+                euler.x = Mathf.Max(360 - 89, euler.x);
+            else
+                euler.x = Mathf.Min(89, euler.x);
+
+            transform.localEulerAngles = euler;
         }
     }
 }
