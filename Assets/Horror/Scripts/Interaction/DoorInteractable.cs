@@ -16,6 +16,9 @@ namespace Horror.Interaction
         private bool _isOpen = false;
 
         [SerializeField]
+        private bool _isLocked = false;
+
+        [SerializeField]
         private Collider doorCollider = null;
 
         [SerializeField]
@@ -27,6 +30,9 @@ namespace Horror.Interaction
         [SerializeField]
         private AudioClip closeClip = null;
 
+        [SerializeField]
+        private AudioClip lockedClip = null;
+
         #endregion
 
         public bool IsOpen
@@ -35,12 +41,26 @@ namespace Horror.Interaction
             private set => _isOpen = value;
         }
 
+        public bool IsLocked
+        {
+            get => _isLocked;
+            set => _isLocked = value;
+        }
+
         public bool IsAnimating { get; private set; }
 
         protected override void PerformInteraction(RaycastHit hit)
         {
             if (IsAnimating)
                 return;
+
+            if (IsLocked)
+            {
+                if (!audioSource.isPlaying)
+                    audioSource.PlayOneShot(lockedClip);
+
+                return;
+            }
 
             if (!IsOpen)
             {
