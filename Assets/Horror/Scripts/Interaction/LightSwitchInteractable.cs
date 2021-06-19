@@ -18,7 +18,18 @@ namespace Horror.Interaction
         [SerializeField]
         private AudioClip audioClip = null;
 
+        [SerializeField]
+        private ParticlesWhenLightOff particles = null;
+
         #endregion
+
+        protected override void Start()
+        {
+            base.Start();
+
+            if (particles)
+                particles.target = lightTarget.Light;
+        }
 
         protected override void PerformInteraction(RaycastHit hit)
         {

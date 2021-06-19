@@ -18,6 +18,8 @@ namespace Horror.Interaction
 
         #endregion
 
+        public override Light Light => target;
+
         private float onIntensity;
 
         private void Start()

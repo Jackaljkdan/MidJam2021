@@ -8,6 +8,8 @@ namespace Horror.Interaction
 {
     public interface ILightTarget
     {
+        Light Light { get; }
+
         void Toggle();
     }
     

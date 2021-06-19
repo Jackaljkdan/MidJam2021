@@ -10,9 +10,9 @@ namespace Horror.Interaction
     {
         #region Inspector
 
-
-
         #endregion
+
+        public abstract Light Light { get; }
 
         public abstract void Toggle();
     }
