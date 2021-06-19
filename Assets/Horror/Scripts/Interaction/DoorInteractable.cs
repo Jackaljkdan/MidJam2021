@@ -18,6 +18,15 @@ namespace Horror.Interaction
         [SerializeField]
         private Collider doorCollider = null;
 
+        [SerializeField]
+        private AudioSource audioSource = null;
+
+        [SerializeField]
+        private AudioClip openClip = null;
+
+        [SerializeField]
+        private AudioClip closeClip = null;
+
         #endregion
 
         public bool IsOpen
@@ -34,9 +43,15 @@ namespace Horror.Interaction
                 return;
 
             if (!IsOpen)
+            {
                 GetComponent<Animator>().Play("DoorOpen");
+                audioSource.PlayOneShot(openClip);
+            }
             else
+            {
                 GetComponent<Animator>().Play("DoorClose");
+                audioSource.PlayOneShot(closeClip);
+            }
 
             Vector3 localNormal = hit.collider.transform.InverseTransformDirection(hit.normal);
             if (localNormal.z < 0 && !IsOpen)
