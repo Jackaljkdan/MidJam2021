@@ -40,7 +40,7 @@ namespace Horror
                 if ((currentPosition - lastPosition).sqrMagnitude > 0)
                     elapsedSecondsWhileStill = Mathf.Max(0, elapsedSecondsWhileStill - Time.deltaTime * 2);
                 else
-                    elapsedSecondsWhileStill += Time.deltaTime;
+                    elapsedSecondsWhileStill = Mathf.Min(maxStillnessSeconds, elapsedSecondsWhileStill + Time.deltaTime);
 
                 onStillnessMeasure.Invoke(elapsedSecondsWhileStill / maxStillnessSeconds);
 

@@ -7699,6 +7699,7 @@ GameObject:
   - component: {fileID: 654565080}
   - component: {fileID: 654565081}
   - component: {fileID: 654565082}
+  - component: {fileID: 654565083}
   m_Layer: 0
   m_Name: DepthsMonster
   m_TagString: Untagged
@@ -7750,6 +7751,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerp: 2
+--- !u!114 &654565083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654565079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18312a003be0b4d4a998dc03f96b7bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterActivation: 1
 --- !u!1 &664293338
 GameObject:
   m_ObjectHideFlags: 0
@@ -12477,8 +12491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66a836be3a373b4bb8cc34a5be6e2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStillnessSeconds: 10
-  falloffMultiplier: 2
 --- !u!114 &1226849860
 MonoBehaviour:
   m_ObjectHideFlags: 0
