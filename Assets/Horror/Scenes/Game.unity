@@ -11875,6 +11875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightTarget: {fileID: 1150587962}
+  audioClip: {fileID: 8300000, guid: 444e8edc4e70c1c428b0f5c90cd1410c, type: 3}
 --- !u!65 &1150587964
 BoxCollider:
   m_ObjectHideFlags: 0

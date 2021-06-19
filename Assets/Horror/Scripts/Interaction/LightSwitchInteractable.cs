@@ -1,4 +1,5 @@
 using JK.Interaction;
+using MyBox;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,11 +15,15 @@ namespace Horror.Interaction
         [SerializeField]
         private LightTargetBehaviour lightTarget = null;
 
+        [SerializeField]
+        private AudioClip audioClip = null;
+
         #endregion
 
         protected override void PerformInteraction(RaycastHit hit)
         {
             lightTarget.Toggle();
+            gameObject.GetOrAddComponent<AudioSource>().PlayOneShot(audioClip);
         }
     }
 }
