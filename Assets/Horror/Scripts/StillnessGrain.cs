@@ -10,48 +10,27 @@ namespace Horror
 {
     public class StillnessGrain : MonoBehaviour
     {
-        #region Inspector
-
-        [SerializeField]
-        private float maxStillnessSeconds = 10f;
-
-        [SerializeField]
-        private float falloffMultiplier = 2;
-
-        #endregion
-
         [Inject]
         private PostProcessVolume volume = null;
 
+        [Inject(Id = "player")]
+        private StillnessMeter stillnessMeter = null;
+
         private void Start()
         {
-            StartCoroutine(StillnessCoroutine());
+            stillnessMeter.onStillnessMeasure.AddListener(OnStillnessMeasured);
         }
 
-        private IEnumerator StillnessCoroutine()
+        private void OnDestroy()
         {
-            Vector3 lastPosition = transform.position;
-            float elapsedSecondsWhileStill = 0;
+            if (stillnessMeter)
+                stillnessMeter.onStillnessMeasure.RemoveListener(OnStillnessMeasured);
+        }
+
+        private void OnStillnessMeasured(float stillness)
+        {
             var grain = volume.profile.GetSetting<Grain>();
-
-            while (true)
-            {
-                yield return null;
-
-                Vector3 currentPosition = transform.position;
-
-                if ((currentPosition - lastPosition).sqrMagnitude > 0)
-                    elapsedSecondsWhileStill = Mathf.Max(0, elapsedSecondsWhileStill - Time.deltaTime*2);
-                else
-                    elapsedSecondsWhileStill += Time.deltaTime;
-
-                grain.intensity.value = elapsedSecondsWhileStill / maxStillnessSeconds;
-
-                lastPosition = currentPosition;
-            }
+            grain.intensity.value = stillness;
         }
     }
-    
-    [Serializable]
-    public class UnityEventStillnessGrain : UnityEvent<StillnessGrain> { }
 }
