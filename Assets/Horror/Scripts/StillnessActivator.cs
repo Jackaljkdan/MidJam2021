@@ -33,7 +33,6 @@ namespace Horror
 
         private void OnStillnessMeasured(float stillness)
         {
-            Debug.Log($"stillness: {stillness}");
             if (Mathf.Approximately(stillness, 1))
             {
                 gameObject.SetActive(true);
