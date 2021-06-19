@@ -12476,7 +12476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxStillnessSeconds: 10
-  movementDeltaSquared: 0.5
+  movementDeltaSquared: 0.3
   lerp: 2
 --- !u!1 &1232285490
 GameObject:

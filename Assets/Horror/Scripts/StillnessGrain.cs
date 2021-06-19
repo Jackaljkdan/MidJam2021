@@ -16,10 +16,7 @@ namespace Horror
         private float maxStillnessSeconds = 10f;
 
         [SerializeField]
-        private float movementDeltaSquared = 0.5f;
-
-        [SerializeField]
-        private float lerp = 5f;
+        private float falloffMultiplier = 2;
 
         #endregion
 
@@ -34,8 +31,6 @@ namespace Horror
         private IEnumerator StillnessCoroutine()
         {
             Vector3 lastPosition = transform.position;
-            float positionUpdateSeconds = 0.2f;
-            float elapsedSecondsSincePositionUpdate = 0;
             float elapsedSecondsWhileStill = 0;
             var grain = volume.profile.GetSetting<Grain>();
 
@@ -45,20 +40,14 @@ namespace Horror
 
                 Vector3 currentPosition = transform.position;
 
-                if ((currentPosition - lastPosition).sqrMagnitude <= movementDeltaSquared)
-                    elapsedSecondsWhileStill += Time.deltaTime;
+                if ((currentPosition - lastPosition).sqrMagnitude > 0)
+                    elapsedSecondsWhileStill = Mathf.Max(0, elapsedSecondsWhileStill - Time.deltaTime*2);
                 else
-                    elapsedSecondsWhileStill = 0;
+                    elapsedSecondsWhileStill += Time.deltaTime;
 
-                grain.intensity.value = Mathf.Lerp(grain.intensity.value, elapsedSecondsWhileStill / maxStillnessSeconds, lerp * Time.deltaTime);
+                grain.intensity.value = elapsedSecondsWhileStill / maxStillnessSeconds;
 
-                elapsedSecondsSincePositionUpdate += Time.deltaTime;
-
-                if (elapsedSecondsSincePositionUpdate >= positionUpdateSeconds)
-                {
-                    elapsedSecondsSincePositionUpdate = 0;
-                    lastPosition = currentPosition;
-                }
+                lastPosition = currentPosition;
             }
         }
     }
