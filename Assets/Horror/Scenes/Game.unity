@@ -3629,8 +3629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112e00ec73f8f144a9830e9a13d015b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightTarget: {fileID: 2079184933}
-  startsOff: 0
+  lightTarget: {fileID: 359866875}
 --- !u!65 &337051287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3746,6 +3745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 359866874}
+  - component: {fileID: 359866875}
   m_Layer: 0
   m_Name: CeilingLight
   m_TagString: Untagged
@@ -3771,6 +3771,20 @@ Transform:
   m_Father: {fileID: 102375672}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &359866875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359866873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a392c4468ed8d1341ac1025e580b8d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2079184933}
+  startsOff: 0
 --- !u!43 &369841352
 Mesh:
   m_ObjectHideFlags: 0

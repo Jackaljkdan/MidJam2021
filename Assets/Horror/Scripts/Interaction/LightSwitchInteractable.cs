@@ -12,26 +12,13 @@ namespace Horror.Interaction
         #region Inspector
 
         [SerializeField]
-        private Light lightTarget = null;
-
-        [SerializeField]
-        private bool startsOff = false;
+        private LightTargetBehaviour lightTarget = null;
 
         #endregion
 
-        private float onIntensity;
-
-        private void Start()
-        {
-            onIntensity = lightTarget.intensity;
-        }
-
         protected override void PerformInteraction(RaycastHit hit)
         {
-            if (lightTarget.intensity == onIntensity)
-                lightTarget.intensity = 0;
-            else
-                lightTarget.intensity = onIntensity;
+            lightTarget.Toggle();
         }
     }
 }
