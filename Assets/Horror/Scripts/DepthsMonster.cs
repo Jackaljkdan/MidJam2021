@@ -6,8 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering.PostProcessing;
 using Zenject;
 
 namespace Horror
@@ -30,8 +29,11 @@ namespace Horror
         [Inject(Id = "player")]
         private PlayerInputRigidBody playerInput = null;
 
+        //[Inject]
+        //private Volume urpVolume = null;
+
         [Inject]
-        private Volume volume = null;
+        private PostProcessVolume volume = null;
 
         private void Start()
         {
@@ -52,11 +54,21 @@ namespace Horror
         private void DragPlayerDown()
         {
             playerInput.GetComponent<Animator>().Play("DraggedBelow");
-            var colorAdjustments = volume.profile.components.FirstOrDefault(component => component is ColorAdjustments) as ColorAdjustments;
-            colorAdjustments.active = true;
+
+            //var colorAdjustments = urpVolume.profile.components.FirstOrDefault(component => component is ColorAdjustments) as ColorAdjustments;
+            //colorAdjustments.active = true;
+            //DOTween.To(
+            //    () => colorAdjustments.colorFilter.value,
+            //    color => colorAdjustments.colorFilter.value = color,
+            //    Color.black,
+            //    duration: 1.1f
+            //).SetDelay(0.8f);
+
+            var colorGrading = volume.profile.GetSetting<ColorGrading>();
+            colorGrading.active = true;
             DOTween.To(
-                () => colorAdjustments.colorFilter.value,
-                color => colorAdjustments.colorFilter.value = color,
+                () => colorGrading.colorFilter.value,
+                color => colorGrading.colorFilter.value = color,
                 Color.black,
                 duration: 1.1f
             ).SetDelay(0.8f);
