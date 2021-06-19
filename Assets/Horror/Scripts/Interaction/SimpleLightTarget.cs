@@ -25,6 +25,9 @@ namespace Horror.Interaction
         private void Start()
         {
             onIntensity = target.intensity;
+
+            if (startsOff)
+                Toggle();
         }
 
         public override void Toggle()

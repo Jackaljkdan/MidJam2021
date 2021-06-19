@@ -21,31 +21,26 @@ namespace Horror
 
         #endregion
 
+        Vector3 lastPosition;
+        float elapsedSecondsWhileStill = 0;
+
         private void Start()
         {
-            StartCoroutine(StillnessCoroutine());
+            lastPosition = transform.position;
         }
 
-        private IEnumerator StillnessCoroutine()
+        private void Update()
         {
-            Vector3 lastPosition = transform.position;
-            float elapsedSecondsWhileStill = 0;
+            Vector3 currentPosition = transform.position;
 
-            while (true)
-            {
-                yield return null;
+            if ((currentPosition - lastPosition).sqrMagnitude > 0)
+                elapsedSecondsWhileStill = Mathf.Max(0, elapsedSecondsWhileStill - Time.deltaTime * falloffMultiplier);
+            else
+                elapsedSecondsWhileStill = Mathf.Min(maxStillnessSeconds, elapsedSecondsWhileStill + Time.deltaTime);
 
-                Vector3 currentPosition = transform.position;
+            onStillnessMeasure.Invoke(elapsedSecondsWhileStill / maxStillnessSeconds);
 
-                if ((currentPosition - lastPosition).sqrMagnitude > 0)
-                    elapsedSecondsWhileStill = Mathf.Max(0, elapsedSecondsWhileStill - Time.deltaTime * 2);
-                else
-                    elapsedSecondsWhileStill = Mathf.Min(maxStillnessSeconds, elapsedSecondsWhileStill + Time.deltaTime);
-
-                onStillnessMeasure.Invoke(elapsedSecondsWhileStill / maxStillnessSeconds);
-
-                lastPosition = currentPosition;
-            }
+            lastPosition = currentPosition;
         }
     }
     
