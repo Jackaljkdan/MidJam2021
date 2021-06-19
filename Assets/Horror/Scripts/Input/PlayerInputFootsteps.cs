@@ -72,8 +72,6 @@ namespace Horror.Input
             lastSourceIndex = (lastSourceIndex + 1) % sources.Count;
 
             sources[lastSourceIndex].PlayOneShot(randomClip);
-
-            Debug.Log($"playing of foot {sources[lastSourceIndex].name}");
         }
 
         private void OnDestroy()

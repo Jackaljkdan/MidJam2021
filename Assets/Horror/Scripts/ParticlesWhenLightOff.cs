@@ -25,14 +25,10 @@ namespace Horror
             if (Mathf.Approximately(target.intensity, 0))
             {
                 if (!particles.isPlaying)
-                {
-                    Debug.Log($"{name} playing particles {target.intensity} {particles.isPlaying}");
                     particles.Play();
-                }
             }
             else if (particles.isPlaying)
             {
-                Debug.Log($"{name} stopping particles {target.intensity} {particles.isPlaying}");
                 particles.Stop();
             }
         }
