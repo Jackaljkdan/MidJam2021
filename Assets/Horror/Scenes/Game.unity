@@ -1245,6 +1245,67 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 197001536}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &213045350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 213045351}
+  - component: {fileID: 213045352}
+  - component: {fileID: 213045353}
+  m_Layer: 0
+  m_Name: RedDoorHint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &213045351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213045350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.91, y: 0, z: 2.75}
+  m_LocalScale: {x: 3.3165, y: 1, z: 12.7987385}
+  m_Children: []
+  m_Father: {fileID: 693738097}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &213045352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213045350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &213045353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213045350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bbfa09900a92144a4a56943f2d0da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterTriggering: 1
+  destroyEntireGameobject: 1
+  doorLight: {fileID: 613284163}
+  bathroomDoor: {fileID: 645736808}
 --- !u!1001 &213891400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3069,6 +3130,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 236213568}
+    - target: {fileID: 4226870846770568758, guid: ab52c64359cd312439eb9dd72fe61ad7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0a30e16d084849469f5a0da383fddea, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab52c64359cd312439eb9dd72fe61ad7, type: 3}
 --- !u!4 &478376335 stripped
@@ -6046,6 +6112,7 @@ Transform:
   - {fileID: 102375672}
   - {fileID: 699438659}
   - {fileID: 1145069940}
+  - {fileID: 213045351}
   - {fileID: 782553856}
   - {fileID: 234994439}
   - {fileID: 488401328}
@@ -7194,7 +7261,7 @@ Transform:
   m_LocalScale: {x: 2.6279, y: 2.014, z: 2.8853}
   m_Children: []
   m_Father: {fileID: 693738097}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &782553857
 BoxCollider:
@@ -20126,7 +20193,7 @@ PrefabInstance:
     - target: {fileID: 2884072777162232598, guid: 167a3ca85ef47b74f93e79c43b56175a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2884072777162232598, guid: 167a3ca85ef47b74f93e79c43b56175a,
         type: 3}
@@ -20290,7 +20357,7 @@ PrefabInstance:
     - target: {fileID: 3304339335485146685, guid: 0f638f7078e3f0d4ca2d3a672c6f64b1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3304339335485146685, guid: 0f638f7078e3f0d4ca2d3a672c6f64b1,
         type: 3}
