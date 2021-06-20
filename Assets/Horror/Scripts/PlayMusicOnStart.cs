@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace Horror
         {
             if (!musicSource.isPlaying)
                 musicSource.Play();
+
+            musicSource.DOFade(0.3f, duration: 0.5f);
         }
     }
 }

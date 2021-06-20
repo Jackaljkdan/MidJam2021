@@ -7,6 +7,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Horror
@@ -34,6 +35,9 @@ namespace Horror
 
         [Inject]
         private PostProcessVolume volume = null;
+
+        [Inject(Id = "music")]
+        private AudioSource musicSource = null;
 
         private void Start()
         {
@@ -64,14 +68,23 @@ namespace Horror
             //    duration: 1.1f
             //).SetDelay(0.8f);
 
+            musicSource.DOFade(0, duration: 0.5f);
+
             var colorGrading = volume.profile.GetSetting<ColorGrading>();
             colorGrading.active = true;
-            DOTween.To(
+            var tween = DOTween.To(
                 () => colorGrading.colorFilter.value,
                 color => colorGrading.colorFilter.value = color,
                 Color.black,
                 duration: 1.1f
             ).SetDelay(0.8f);
+
+            tween.onComplete += OnPlayerDragged;
+        }
+
+        private void OnPlayerDragged()
+        {
+            SceneManager.LoadSceneAsync(gameObject.scene.name, LoadSceneMode.Single);
         }
     }
     
