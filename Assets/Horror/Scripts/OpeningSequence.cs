@@ -13,7 +13,14 @@ namespace Horror
     {
         #region Inspector
 
-        public LightSwitchInteractable bajour;
+        [SerializeField]
+        private Transform playerAnchor = null;
+
+        [SerializeField]
+        private LightSwitchInteractable bajour = null;
+
+        [SerializeField]
+        private bool playInEditor = true;
 
         #endregion
 
@@ -23,6 +30,9 @@ namespace Horror
         [Inject(Id = "player.camera")]
         private PlayerInputRotation rotationInput = null;
 
+        [Inject(Id = "player.head")]
+        private Transform headTransform = null;
+
         [Inject(Id = "player")]
         private Animator playerAnimator = null;
 
@@ -31,6 +41,9 @@ namespace Horror
 
         private void Start()
         {
+            if (Application.isEditor && !playInEditor)
+                return;
+
             bodyInput.enabled = false;
             rotationInput.enabled = false;
             stillnessMeter.enabled = false;
@@ -40,6 +53,9 @@ namespace Horror
 
         private IEnumerator SequenceCoroutine()
         {
+            bodyInput.transform.position = playerAnchor.position;
+            bodyInput.transform.rotation = playerAnchor.rotation;
+
             playerAnimator.Play("WakeUp");
             playerAnimator.speed = 0;
 
