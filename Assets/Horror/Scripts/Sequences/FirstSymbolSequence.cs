@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Horror.Input;
 using Horror.Interaction;
 using Horror.UI;
@@ -29,6 +30,9 @@ namespace Horror.Sequences
 
         [Inject(Id = "player")]
         private StillnessMeter stillnessMeter = null;
+
+        [Inject(Id = "music")]
+        private AudioSource musicSource = null;
 
         [SerializeField]
         private GameObject monster = null;
@@ -79,13 +83,13 @@ namespace Horror.Sequences
 
             symbol.GetComponent<ForceCameraLook>().enabled = false;
             bathroomDoor.MovingPiece.GetComponent<ForceCameraLook>().enabled = true;
+            musicSource.DOFade(0, duration: 1f);
 
             yield return new WaitForSeconds(1.5f);
 
             // Phase: stop force look and flicker light
             Debug.Log("Phase: stop force look and flicker light");
 
-            // TODO: turn music volume down
             bathroomDoor.MovingPiece.GetComponent<ForceCameraLook>().enabled = false;
             bathroomLight.Light.GetComponent<FlickeringLight>().enabled = true;
 
