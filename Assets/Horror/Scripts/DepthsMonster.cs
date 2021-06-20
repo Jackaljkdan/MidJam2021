@@ -39,10 +39,14 @@ namespace Horror
         [Inject(Id = "music")]
         private AudioSource musicSource = null;
 
+        [Inject(Id = "jumpscare.4s")]
+        private AudioSource jumpscareSource = null;
+
         private void Start()
         {
             playerInput.enabled = false;
             StartCoroutine(ActivateArmsCoroutine());
+            jumpscareSource.PlayDelayed(dragPlayerDelay / 2);
             Invoke(nameof(DragPlayerDown), dragPlayerDelay);
         }
 
