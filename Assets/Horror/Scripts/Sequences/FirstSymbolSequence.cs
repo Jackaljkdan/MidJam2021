@@ -34,6 +34,9 @@ namespace Horror.Sequences
         [Inject(Id = "music")]
         private AudioSource musicSource = null;
 
+        [Inject(Id = "jumpscare.4s")]
+        private AudioSource jumpscareSource = null;
+
         [SerializeField]
         private GameObject monster = null;
 
@@ -144,14 +147,10 @@ namespace Horror.Sequences
 
             stillnessMeter.ForceMeasure(0.9f);
 
-            yield return new WaitForSeconds(0.5f);
-
-            // TODO: play jumpscare sound
+            jumpscareSource.Play();
 
             yield return new WaitForSeconds(3);
 
-
-            // TODO: turn music volume back up
         }
 
     }
