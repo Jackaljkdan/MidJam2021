@@ -25,6 +25,7 @@ namespace Horror
 
         public void OnStartClicked()
         {
+            Cursor.lockState = CursorLockMode.Locked;
             group.DOFade(0, 2.2f);
             Invoke(nameof(LoadGameScene), 2f);
         }
