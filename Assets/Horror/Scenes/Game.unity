@@ -1930,6 +1930,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CorridorLightSwitch (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3568080734532768499, guid: 27295f9d31e30f94faeb7fbec8bda705,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27295f9d31e30f94faeb7fbec8bda705, type: 3}
 --- !u!4 &213891401 stripped
@@ -8197,6 +8202,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 929214374}
+  - {fileID: 1232285491}
   - {fileID: 254313614}
   - {fileID: 620395093}
   - {fileID: 751357120}
@@ -8222,7 +8228,6 @@ Transform:
   - {fileID: 1888885476}
   - {fileID: 986337873}
   - {fileID: 1708301170}
-  - {fileID: 1232285491}
   m_Father: {fileID: 693738097}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10040,6 +10045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CorridorCeilingLight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349114306589600689, guid: 6dd5b5af05355b34a8cb3e0e54a56d5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3349114306589600690, guid: 6dd5b5af05355b34a8cb3e0e54a56d5b,
         type: 3}
@@ -12457,6 +12467,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CorridorLightSwitch (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3568080734532768499, guid: 27295f9d31e30f94faeb7fbec8bda705,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27295f9d31e30f94faeb7fbec8bda705, type: 3}
 --- !u!4 &1022914566 stripped
@@ -13844,8 +13859,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.6, z: 0.3}
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Size: {x: 0.4, y: 0.6, z: 0.5}
+  m_Center: {x: 0, y: 0.1, z: -0.1}
 --- !u!43 &1165849397
 Mesh:
   m_ObjectHideFlags: 0
@@ -14379,7 +14394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnchor: {fileID: 32356831}
   bajour: {fileID: 1150587963}
-  playInEditor: 1
+  playInEditor: 0
 --- !u!1 &1226853276
 GameObject:
   m_ObjectHideFlags: 0
@@ -14707,7 +14722,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 699438659}
-  m_RootOrder: 26
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!64 &1232285492
 MeshCollider:
@@ -24135,17 +24150,17 @@ PrefabInstance:
     - target: {fileID: 2402717655980561146, guid: 8b53883e9c12edf4e9fa7c21d6e9da16,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 2402717655980561146, guid: 8b53883e9c12edf4e9fa7c21d6e9da16,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.192
+      value: 0.065
       objectReference: {fileID: 0}
     - target: {fileID: 2402717655980561146, guid: 8b53883e9c12edf4e9fa7c21d6e9da16,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.114
+      value: -0.279
       objectReference: {fileID: 0}
     - target: {fileID: 2402717655980561146, guid: 8b53883e9c12edf4e9fa7c21d6e9da16,
         type: 3}
@@ -31264,6 +31279,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CorridorCeilingLight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3349114306589600689, guid: 6dd5b5af05355b34a8cb3e0e54a56d5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3349114306589600690, guid: 6dd5b5af05355b34a8cb3e0e54a56d5b,
         type: 3}
       propertyPath: m_RootOrder
@@ -32278,6 +32298,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BathroomCeilingLight
       objectReference: {fileID: 0}
+    - target: {fileID: 3349114306589600689, guid: 6dd5b5af05355b34a8cb3e0e54a56d5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3349114306589600690, guid: 6dd5b5af05355b34a8cb3e0e54a56d5b,
         type: 3}
       propertyPath: m_RootOrder
@@ -32406,6 +32431,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BathroomLightSwitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568080734532768499, guid: 27295f9d31e30f94faeb7fbec8bda705,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27295f9d31e30f94faeb7fbec8bda705, type: 3}
