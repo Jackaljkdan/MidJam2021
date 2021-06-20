@@ -64,8 +64,8 @@ namespace Horror.Sequences
             stillnessMeter.increaseMultiplier = 3;
 
             DOTween.To(
-                () => playerBodyInput.Speed,
-                val => playerBodyInput.Speed = val,
+                () => playerBodyInput.acceleration,
+                val => playerBodyInput.acceleration = val,
                 0,
                 duration: 1.5f
             ).onComplete += () => playerBodyInput.enabled = false;
