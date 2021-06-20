@@ -19,7 +19,7 @@ namespace Horror.Interaction.Hints
         [Inject]
         private ToastText toastText = null;
 
-        protected override void PefromTriggeredAction()
+        protected override void PerformTriggeredAction()
         {
             toastText.Show("I should turn on the lights");
         }

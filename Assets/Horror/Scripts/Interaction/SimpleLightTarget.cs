@@ -32,6 +32,9 @@ namespace Horror.Interaction
 
         public override void Toggle()
         {
+            if (!enabled)
+                return;
+
             if (target.intensity == onIntensity)
                 target.intensity = 0;
             else

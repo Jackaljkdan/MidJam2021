@@ -42,6 +42,12 @@ namespace Horror
 
             lastPosition = currentPosition;
         }
+
+        public void ForceMeasure(float measure)
+        {
+            elapsedSecondsWhileStill = maxStillnessSeconds * measure;
+            onStillnessMeasure.Invoke(measure);
+        }
     }
     
     [Serializable]

@@ -2,6 +2,7 @@ using JK.Interaction;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,6 +21,9 @@ namespace Horror.Interaction
 
         [SerializeField]
         private Collider doorCollider = null;
+
+        [SerializeField]
+        private Collider passageCollider = null;
 
         [SerializeField]
         private AudioSource audioSource = null;
@@ -49,6 +53,8 @@ namespace Horror.Interaction
 
         public bool IsAnimating { get; private set; }
 
+        public GameObject MovingPiece => doorCollider.gameObject;
+
         protected override void PerformInteraction(RaycastHit hit)
         {
             if (IsAnimating)
@@ -73,13 +79,40 @@ namespace Horror.Interaction
                 audioSource.PlayOneShot(closeClip);
             }
 
-            Vector3 localNormal = hit.collider.transform.InverseTransformDirection(hit.normal);
-            if (localNormal.z < 0 && !IsOpen)
+            if (hit.collider != null)
+            {
+                Vector3 localNormal = hit.collider.transform.InverseTransformDirection(hit.normal);
+                if (localNormal.z < 0 && !IsOpen)
+                    doorCollider.enabled = false;
+                else if (localNormal.z > 0 && IsOpen)
+                    doorCollider.enabled = false;
+            }
+            else
+            {
                 doorCollider.enabled = false;
-            else if (localNormal.z > 0 && IsOpen)
-                doorCollider.enabled = false;
+            }
 
             IsAnimating = true;
+        }
+
+        public void ForceClose(bool disableCollider)
+        {
+            if (IsAnimating)
+            {
+                if (IsOpen)
+                    return;
+            }
+            else if (!IsOpen)
+            {
+                return;
+            }
+
+            GetComponent<Animator>().Play("DoorClose");
+            audioSource.PlayOneShot(closeClip);
+            passageCollider.gameObject.SetActive(true);
+
+            if (disableCollider)
+                doorCollider.enabled = false;
         }
 
         public void OnDoorOpened()
@@ -87,6 +120,7 @@ namespace Horror.Interaction
             IsAnimating = false;
             IsOpen = true;
             doorCollider.enabled = true;
+            passageCollider.gameObject.SetActive(false);
         }
 
         public void OnDoorClosed()
@@ -94,6 +128,7 @@ namespace Horror.Interaction
             IsAnimating = false;
             IsOpen = false;
             doorCollider.enabled = true;
+            passageCollider.gameObject.SetActive(false);
         }
     }
 }

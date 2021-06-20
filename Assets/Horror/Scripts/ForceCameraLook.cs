@@ -15,6 +15,8 @@ namespace Horror
 
         #endregion
 
+        public class Factory : PlaceholderFactory<ForceCameraLook> { }
+        
         [Inject(Id = "player.camera")]
         private Transform cameraTransform = null;
 

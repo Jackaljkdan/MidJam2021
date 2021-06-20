@@ -920,6 +920,7 @@ Transform:
   - {fileID: 4226870845207791784}
   - {fileID: 7784603143189474053}
   - {fileID: 4226870846471082684}
+  - {fileID: 6306574563797602337}
   - {fileID: 4226870846018894379}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -958,6 +959,7 @@ MonoBehaviour:
   _isOpen: 0
   _isLocked: 0
   doorCollider: {fileID: 4226870846770568759}
+  passageCollider: {fileID: 7921661853193951216}
   audioSource: {fileID: 5786526769297413643}
   openClip: {fileID: 8300000, guid: 16b583b52e91a424caa8c46e49034b18, type: 3}
   closeClip: {fileID: 8300000, guid: fb50e4528192f914381bdf5f37d12eb9, type: 3}
@@ -993,7 +995,7 @@ Transform:
   - {fileID: 4226870845259612565}
   - {fileID: 4226870846073171366}
   m_Father: {fileID: 4226870845630634943}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4226870846073171367
 GameObject:
@@ -2087,6 +2089,50 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &5389368921942917369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6306574563797602337}
+  - component: {fileID: 7921661853193951216}
+  m_Layer: 0
+  m_Name: PassageCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6306574563797602337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5389368921942917369}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.4, z: 0}
+  m_LocalScale: {x: 1.77, y: 2.8, z: 0.2010004}
+  m_Children: []
+  m_Father: {fileID: 4226870845630634943}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7921661853193951216
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5389368921942917369}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7784603143189474054
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,12 +29,17 @@ namespace Horror
 
         public void StopFlicker()
         {
-            StopCoroutine(nameof(FlickerCoroutine));
+            StopAllCoroutines();
         }
 
         private void Start()
         {
             StartFlicker();
+        }
+
+        private void OnDisable()
+        {
+            StopFlicker();
         }
 
         private IEnumerator FlickerCoroutine()

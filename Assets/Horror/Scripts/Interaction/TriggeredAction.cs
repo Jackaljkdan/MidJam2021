@@ -27,7 +27,7 @@ namespace Horror.Interaction
 
         private void OnTriggerEnter(Collider other)
         {
-            PefromTriggeredAction();
+            PerformTriggeredAction();
 
             if (destroyAfterTriggering)
             {
@@ -38,7 +38,7 @@ namespace Horror.Interaction
             }
         }
 
-        protected abstract void PefromTriggeredAction();
+        protected abstract void PerformTriggeredAction();
     }
     
     [Serializable]
