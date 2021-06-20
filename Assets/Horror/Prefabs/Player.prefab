@@ -5632,7 +5632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd80fc4eca1ca845b2f7caeed184a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 1.5
   acceleration: 400
   directionReference: {fileID: 2235897191568745546}
   _onInput:
