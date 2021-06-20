@@ -166,7 +166,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -339,7 +339,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5757,6 +5757,9 @@ MonoBehaviour:
   playerAnchor: {fileID: 0}
   bajour: {fileID: 0}
   playInEditor: 0
+  onBlacknessEnd:
+    m_PersistentCalls:
+      m_Calls: []
   onSequenceEnd:
     m_PersistentCalls:
       m_Calls: []

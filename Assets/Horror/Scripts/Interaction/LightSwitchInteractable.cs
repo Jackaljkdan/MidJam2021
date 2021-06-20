@@ -38,7 +38,9 @@ namespace Horror.Interaction
             if (lightTarget)
                 lightTarget.Toggle();
 
-            gameObject.GetOrAddComponent<AudioSource>().PlayOneShot(audioClip);
+            var source = gameObject.GetOrAddComponent<AudioSource>();
+            source.spatialBlend = 1;
+            source.PlayOneShot(audioClip);
 
             onInteraction.Invoke();
         }
