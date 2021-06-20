@@ -19,12 +19,16 @@ namespace Horror
         [Inject(Id = "music")]
         private AudioSource musicSource = null;
 
+        [Inject(Id = "music.volume")]
+        private float musicVolume = 1;
+
+
         private void Start()
         {
             if (!musicSource.isPlaying)
                 musicSource.Play();
 
-            musicSource.DOFade(0.3f, duration: 0.5f);
+            musicSource.DOFade(musicVolume, duration: 0.5f);
         }
     }
 }
