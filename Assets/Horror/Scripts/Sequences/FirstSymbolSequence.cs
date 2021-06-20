@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Horror.Sequences
@@ -28,6 +30,14 @@ namespace Horror.Sequences
         [SerializeField]
         private DoorInteractable bathroomDoor = null;
 
+        [SerializeField]
+        private GameObject monster = null;
+
+        #endregion
+
+        [Inject(Id = "player")]
+        private PlayerInputRigidBody bodyInput = null;
+
         [Inject(Id = "player")]
         private StillnessMeter stillnessMeter = null;
 
@@ -37,13 +47,8 @@ namespace Horror.Sequences
         [Inject(Id = "jumpscare.4s")]
         private AudioSource jumpscareSource = null;
 
-        [SerializeField]
-        private GameObject monster = null;
-
-        #endregion
-
-        [Inject(Id = "player")]
-        private PlayerInputRigidBody bodyInput = null;
+        [Inject]
+        private PostProcessVolume volume = null;
 
         [Inject]
         private ToastText toastText = null;
@@ -151,6 +156,18 @@ namespace Horror.Sequences
 
             yield return new WaitForSeconds(3);
 
+            var colorGrading = volume.profile.GetSetting<ColorGrading>();
+            colorGrading.active = true;
+            var tween = DOTween.To(
+                () => colorGrading.colorFilter.value,
+                color => colorGrading.colorFilter.value = color,
+                Color.black,
+                duration: 1f
+            );
+
+            yield return tween.WaitForCompletion();
+
+            SceneManager.LoadSceneAsync("GamePart2", LoadSceneMode.Single);
         }
 
     }
