@@ -27,13 +27,15 @@ namespace Horror.Interaction
         {
             base.Start();
 
-            if (particles)
+            if (particles && lightTarget)
                 particles.target = lightTarget.Light;
         }
 
         protected override void PerformInteraction(RaycastHit hit)
         {
-            lightTarget.Toggle();
+            if (lightTarget)
+                lightTarget.Toggle();
+
             gameObject.GetOrAddComponent<AudioSource>().PlayOneShot(audioClip);
         }
     }
