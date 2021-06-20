@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Horror.Input;
 using Horror.Interaction;
 using Horror.UI;
@@ -6,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.PostProcessing;
 using Zenject;
 
 namespace Horror.Sequences
@@ -44,6 +46,9 @@ namespace Horror.Sequences
         [Inject(Id = "player")]
         private StillnessMeter stillnessMeter = null;
 
+        [Inject]
+        private PostProcessVolume volume = null;
+
         private void Start()
         {
             if (Application.isEditor && !playInEditor)
@@ -69,9 +74,11 @@ namespace Horror.Sequences
             bajour.Interact(new RaycastHit());
             onBlacknessEnd.Invoke();
 
-            // TODO: blink?
+            yield return new WaitForSeconds(0.25f);
+            yield return StartCoroutine(BlinkCoroutine(0.25f));
+            yield return new WaitForSeconds(0.25f);
+            yield return StartCoroutine(BlinkCoroutine(0.25f));
 
-            yield return new WaitForSeconds(1);
             playerAnimator.speed = 1;
 
             yield return new WaitForSeconds(3);
@@ -80,6 +87,32 @@ namespace Horror.Sequences
             stillnessMeter.enabled = true;
 
             onSequenceEnd.Invoke();
+        }
+
+        private IEnumerator BlinkCoroutine(float seconds)
+        {
+            var colorGrading = volume.profile.GetSetting<ColorGrading>();
+            colorGrading.active = true;
+
+            var tween = DOTween.To(
+                () => colorGrading.colorFilter.value,
+                color => colorGrading.colorFilter.value = color,
+                Color.black,
+                duration: seconds / 2
+            );
+
+            yield return tween.WaitForCompletion();
+
+            tween = DOTween.To(
+                () => colorGrading.colorFilter.value,
+                color => colorGrading.colorFilter.value = color,
+                Color.white,
+                duration: seconds / 2
+            );
+
+            yield return tween.WaitForCompletion();
+
+            colorGrading.active = false;
         }
     }
     
