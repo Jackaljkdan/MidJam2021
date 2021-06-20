@@ -22,7 +22,7 @@ namespace Horror.Sequences
         private void Start()
         {
             GetComponent<WakeUpSequence>().onSequenceEnd.AddListener(OnWakeUp);
-            Invoke(nameof(ShowPhewMessage), 1f);
+            Invoke(nameof(ShowPhewMessage), 2f);
         }
 
         private void ShowPhewMessage()

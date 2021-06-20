@@ -15,6 +15,9 @@ namespace Horror.Sequences
         #region Inspector
 
         [SerializeField]
+        private float blacknessSeconds = 1f;
+
+        [SerializeField]
         private Transform playerAnchor = null;
 
         [SerializeField]
@@ -59,7 +62,8 @@ namespace Horror.Sequences
             playerAnimator.Play("WakeUp");
             playerAnimator.speed = 0;
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(blacknessSeconds);
+
             bajour.Interact(new RaycastHit());
 
             // TODO: blink?
