@@ -25,6 +25,11 @@ namespace Horror
         [SerializeField]
         private float dragPlayerDelay = 1f;
 
+        public bool restartLevel = true;
+
+        [SerializeField]
+        private string nextPartScene = null;
+
         #endregion
 
         [Inject(Id = "player")]
@@ -88,7 +93,12 @@ namespace Horror
 
         private void OnPlayerDragged()
         {
-            SceneManager.LoadSceneAsync(gameObject.scene.name, LoadSceneMode.Single);
+            string nextScene = gameObject.scene.name;
+
+            if (!restartLevel && !string.IsNullOrEmpty(nextPartScene))
+                nextScene = nextPartScene;
+
+            SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Single);
         }
     }
     

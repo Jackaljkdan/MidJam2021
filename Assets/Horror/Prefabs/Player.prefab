@@ -441,6 +441,7 @@ GameObject:
   - component: {fileID: 2235897191366239520}
   - component: {fileID: 2235897191366239523}
   - component: {fileID: 2235897191366239522}
+  - component: {fileID: 8618081515283269942}
   m_Layer: 0
   m_Name: DepthsMonster
   m_TagString: Untagged
@@ -479,6 +480,8 @@ MonoBehaviour:
   arms: {fileID: 2235897191768783085}
   delayPerArm: 0.2
   dragPlayerDelay: 1
+  restartLevel: 1
+  nextPartScene: 
 --- !u!114 &2235897191366239523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +508,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfterActivation: 1
+--- !u!114 &8618081515283269942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235897191366239534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 2235897191366239522}
+  - {fileID: 2235897191366239520}
+  _identifier: depths_monster
+  _useSceneContext: 0
+  _context: {fileID: 0}
+  _bindType: 0
 --- !u!1 &2235897191568745545
 GameObject:
   m_ObjectHideFlags: 0
@@ -5694,6 +5716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxStillnessSeconds: 10
+  increaseMultiplier: 1
   falloffMultiplier: 2
   onStillnessMeasure:
     m_PersistentCalls:

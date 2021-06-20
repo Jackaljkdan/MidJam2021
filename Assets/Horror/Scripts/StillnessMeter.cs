@@ -14,8 +14,8 @@ namespace Horror
         [SerializeField]
         private float maxStillnessSeconds = 10f;
 
-        [SerializeField]
-        private float falloffMultiplier = 2;
+        public float increaseMultiplier = 1;
+        public float falloffMultiplier = 2;
 
         public UnityEventFloat onStillnessMeasure = new UnityEventFloat();
 
@@ -36,7 +36,7 @@ namespace Horror
             if ((currentPosition - lastPosition).sqrMagnitude > 0)
                 elapsedSecondsWhileStill = Mathf.Max(0, elapsedSecondsWhileStill - Time.deltaTime * falloffMultiplier);
             else
-                elapsedSecondsWhileStill = Mathf.Min(maxStillnessSeconds, elapsedSecondsWhileStill + Time.deltaTime);
+                elapsedSecondsWhileStill = Mathf.Min(maxStillnessSeconds, elapsedSecondsWhileStill + Time.deltaTime * increaseMultiplier);
 
             onStillnessMeasure.Invoke(elapsedSecondsWhileStill / maxStillnessSeconds);
 

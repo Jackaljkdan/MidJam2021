@@ -25,6 +25,11 @@ namespace Horror
             stillnessMeter.onStillnessMeasure.AddListener(OnStillnessMeasured);
         }
 
+        private void Start()
+        {
+            
+        }
+
         private void OnDestroy()
         {
             if (stillnessMeter)
@@ -33,6 +38,9 @@ namespace Horror
 
         private void OnStillnessMeasured(float stillness)
         {
+            if (!enabled)
+                return;
+
             if (Mathf.Approximately(stillness, 1))
             {
                 gameObject.SetActive(true);
