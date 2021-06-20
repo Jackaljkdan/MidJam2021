@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
 
-namespace Horror
+namespace Horror.Sequences
 {
     public class OpeningSequence : MonoBehaviour
     {
@@ -30,9 +30,6 @@ namespace Horror
 
         [Inject(Id = "player.camera")]
         private PlayerInputRotation rotationInput = null;
-
-        [Inject(Id = "player.head")]
-        private Transform headTransform = null;
 
         [Inject(Id = "player")]
         private Animator playerAnimator = null;
