@@ -4092,11 +4092,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2235897191366239520, guid: baefb4265b92acd4aa0d2fc79748c0f4,
-        type: 3}
-      propertyPath: nextPartScene
-      value: GamePart3
-      objectReference: {fileID: 0}
     - target: {fileID: 2235897192001717692, guid: baefb4265b92acd4aa0d2fc79748c0f4,
         type: 3}
       propertyPath: bajour

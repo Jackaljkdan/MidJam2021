@@ -26,6 +26,8 @@ namespace Horror.Sequences
         [SerializeField]
         private bool playInEditor = true;
 
+        public UnityEvent onBlacknessEnd = new UnityEvent();
+
         public UnityEvent onSequenceEnd = new UnityEvent();
 
         #endregion
@@ -65,6 +67,7 @@ namespace Horror.Sequences
             yield return new WaitForSeconds(blacknessSeconds);
 
             bajour.Interact(new RaycastHit());
+            onBlacknessEnd.Invoke();
 
             // TODO: blink?
 
