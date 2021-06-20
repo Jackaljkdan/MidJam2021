@@ -25,8 +25,8 @@ namespace Horror
 
         public void OnStartClicked()
         {
-            group.DOFade(0, 1f);
-            Invoke(nameof(LoadGameScene), 0.75f);
+            group.DOFade(0, 2.2f);
+            Invoke(nameof(LoadGameScene), 2f);
         }
 
         private void LoadGameScene()
