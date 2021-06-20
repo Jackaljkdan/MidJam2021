@@ -18,6 +18,8 @@ namespace Horror.UI
 
         #endregion
 
+        private Coroutine coroutine;
+
         private void Start()
         {
             GetComponent<Text>().color = new Color(1, 1, 1, 0);
@@ -30,13 +32,18 @@ namespace Horror.UI
 
         public Coroutine Show(string message, float staySeconds)
         {
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+
             var textUi = GetComponent<Text>();
             textUi.text = message;
-            return StartCoroutine(ShowCoroutine(textUi, staySeconds));
+            coroutine = StartCoroutine(ShowCoroutine(textUi, staySeconds));
+            return coroutine;
         }
 
         private IEnumerator ShowCoroutine(Text textUi, float staySeconds)
         {
+            DOTween.Kill(textUi);
             yield return textUi.DOFade(1, 0.25f).WaitForCompletion();
             yield return new WaitForSeconds(staySeconds);
             yield return textUi.DOFade(0, 0.25f).WaitForCompletion();
