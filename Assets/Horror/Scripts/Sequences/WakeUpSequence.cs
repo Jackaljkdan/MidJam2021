@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Horror.Sequences
 {
-    public class OpeningSequence : MonoBehaviour
+    public class WakeUpSequence : MonoBehaviour
     {
         #region Inspector
 
@@ -22,6 +22,8 @@ namespace Horror.Sequences
 
         [SerializeField]
         private bool playInEditor = true;
+
+        public UnityEvent onSequenceEnd = new UnityEvent();
 
         #endregion
 
@@ -36,9 +38,6 @@ namespace Horror.Sequences
 
         [Inject(Id = "player")]
         private StillnessMeter stillnessMeter = null;
-
-        [Inject]
-        private ToastText toastText = null;
 
         private void Start()
         {
@@ -73,10 +72,10 @@ namespace Horror.Sequences
             rotationInput.enabled = true;
             stillnessMeter.enabled = true;
 
-            toastText.Show("I don't feel good about standing still...");
+            onSequenceEnd.Invoke();
         }
     }
     
     [Serializable]
-    public class UnityEventOpeningSequence : UnityEvent<OpeningSequence> { }
+    public class UnityEventOpeningSequence : UnityEvent<WakeUpSequence> { }
 }
