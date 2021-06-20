@@ -38,7 +38,7 @@ namespace Horror.Sequences
             monster.SetActive(false);
 
             musicSource.DOFade(0, duration: 0.5f);
-            musicSource.DOFade(musicVolume, duration: 0.5f).SetDelay(15);
+            musicSource.DOFade(musicVolume, duration: 0.5f).SetDelay(8);
         }
     }
     

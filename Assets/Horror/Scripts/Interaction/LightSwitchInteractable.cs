@@ -21,6 +21,8 @@ namespace Horror.Interaction
         [SerializeField]
         private ParticlesWhenLightOff particles = null;
 
+        public UnityEvent onInteraction = new UnityEvent();
+
         #endregion
 
         protected override void Start()
@@ -37,6 +39,8 @@ namespace Horror.Interaction
                 lightTarget.Toggle();
 
             gameObject.GetOrAddComponent<AudioSource>().PlayOneShot(audioClip);
+
+            onInteraction.Invoke();
         }
     }
 }
