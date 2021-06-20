@@ -961,7 +961,7 @@ MonoBehaviour:
   doorCollider: {fileID: 4226870846770568759}
   passageCollider: {fileID: 7921661853193951216}
   audioSource: {fileID: 5786526769297413643}
-  openClip: {fileID: 8300000, guid: 16b583b52e91a424caa8c46e49034b18, type: 3}
+  openClip: {fileID: 8300000, guid: 0784ce5a108927f4fa978214359e1b8d, type: 3}
   closeClip: {fileID: 8300000, guid: fb50e4528192f914381bdf5f37d12eb9, type: 3}
   lockedClip: {fileID: 8300000, guid: a86b928f0cf45964797bd2991cd08a5e, type: 3}
 --- !u!1 &4226870846018894376
