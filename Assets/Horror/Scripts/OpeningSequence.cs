@@ -1,5 +1,6 @@
 using Horror.Input;
 using Horror.Interaction;
+using Horror.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,6 +40,9 @@ namespace Horror
         [Inject(Id = "player")]
         private StillnessMeter stillnessMeter = null;
 
+        [Inject]
+        private ToastText toastText = null;
+
         private void Start()
         {
             if (Application.isEditor && !playInEditor)
@@ -71,6 +75,8 @@ namespace Horror
             bodyInput.enabled = true;
             rotationInput.enabled = true;
             stillnessMeter.enabled = true;
+
+            toastText.Show("I don't feel good about standing still...");
         }
     }
     
