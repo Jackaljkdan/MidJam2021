@@ -28,7 +28,7 @@ namespace Horror.Sequences
 
         private void ShowPhewMessage()
         {
-            toastText.Show("I'm awake now... right?!");
+            toastText.Show("Am I awake now?");
         }
 
         private void OnWakeUp()
