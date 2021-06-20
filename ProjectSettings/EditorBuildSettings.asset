@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Horror/Scenes/Game.unity
     guid: 01826d1bf0fa63144b0ec51367661723
+  - enabled: 1
+    path: Assets/Horror/Scenes/GamePart2.unity
+    guid: e485a539bdf143545871be181940625c
   m_configObjects: {}
