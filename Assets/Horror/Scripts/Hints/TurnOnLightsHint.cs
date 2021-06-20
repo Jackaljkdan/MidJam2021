@@ -1,3 +1,4 @@
+using Horror.Interaction;
 using Horror.UI;
 using System;
 using System.Collections;
@@ -6,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
 
-namespace Horror.Interaction.Hints
+namespace Horror.Hints
 {
     public class TurnOnLightsHint : TriggeredAction
     {
