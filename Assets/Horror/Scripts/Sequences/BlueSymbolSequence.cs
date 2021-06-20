@@ -7,6 +7,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Horror.Sequences
@@ -33,6 +35,9 @@ namespace Horror.Sequences
         private Transform playerTransform = null;
 
         [Inject(Id = "player")]
+        private PlayerInputRigidBody playerBodyInput = null;
+
+        [Inject(Id = "player")]
         private StillnessMeter stillnessMeter = null;
 
         [Inject(Id = "music")]
@@ -40,6 +45,9 @@ namespace Horror.Sequences
 
         [Inject(Id = "jumpscare.4s")]
         private AudioSource jumpscareSource = null;
+
+        [Inject]
+        private PostProcessVolume volume = null;
 
         [Inject]
         private ToastText toastText = null;
@@ -92,11 +100,32 @@ namespace Horror.Sequences
                 light.Light.intensity = 0.3f;
             }
 
+            playerBodyInput.enabled = false;
             monster.GetComponent<ForceCameraLook>().enabled = true;
+            monster.GetComponent<LookAtPlayer>().enabled = true;
+            monster.GetComponent<Animator>().Play("MonsterAttackStance");
             jumpscareSource.Play();
 
+            float moveToPlayerSeconds = 1;
+            monster.transform.DOMove(playerTransform.position, duration: moveToPlayerSeconds);
 
+            yield return new WaitForSeconds(moveToPlayerSeconds - 0.8f);
 
+            var colorGrading = volume.profile.GetSetting<ColorGrading>();
+            colorGrading.active = true;
+            var tween = DOTween.To(
+                () => colorGrading.colorFilter.value,
+                color => colorGrading.colorFilter.value = color,
+                Color.black,
+                duration: 0.2f
+            );
+
+            yield return tween.WaitForCompletion();
+
+            // wait jumpscare sound to finish
+            yield return new WaitForSeconds(3);
+
+            SceneManager.LoadSceneAsync("GamePart4", LoadSceneMode.Single);
         }
     }
     
