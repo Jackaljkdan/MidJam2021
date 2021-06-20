@@ -27,7 +27,7 @@ namespace Horror.Sequences
 
         private void ShowPhewMessage()
         {
-            toastText.Show("It was just a nightmare");
+            toastText.Show("I'm awake... It was just a nightmare");
         }
 
         private void OnWakeUp()
