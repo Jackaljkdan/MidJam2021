@@ -53,6 +53,15 @@ namespace Horror.Input
                 UnityEngine.Input.GetAxis("Vertical")
             );
 
+            foreach (var touch in UnityEngine.Input.touches)
+            {
+                if (touch.position.x < Screen.width / 2.0)
+                {
+                    input = new Vector3(0, 0, 1);
+                    break;
+                }
+            }
+
             Vector3 directionedInput = directionReference.TransformDirection(input);
             directionedInput.y = 0;
             directionedInput = Vector3.ClampMagnitude(directionedInput, 1);

@@ -18,9 +18,13 @@ namespace Horror.Input
 
         public float distance = 5;
 
+        public float mobileMaxTouchSeconds = 0.2f;
+
         #endregion
 
-        private bool isFiring = false;
+        private bool hasAlreadyFired = false;
+
+        private float touchSeconds;
 
         private void Start()
         {
@@ -29,17 +33,55 @@ namespace Horror.Input
 
         private void Update()
         {
-            if (UnityEngine.Input.GetAxis("Fire1") != 1)
+            if (!Application.isMobilePlatform)
+                DesktopUpdate();
+            else
+                MobileUpdate();
+        }
+
+        private void DesktopUpdate()
+        {
+            if (!hasAlreadyFired)
             {
-                isFiring = false;
+                if (UnityEngine.Input.GetAxis("Fire1") == 1)
+                {
+                    Raycast();
+                    hasAlreadyFired = true;
+                }
+            }
+            else if (UnityEngine.Input.GetAxis("Fire1") != 1)
+            {
+                hasAlreadyFired = false;
+            }
+        }
+
+        private void MobileUpdate()
+        {
+            if (UnityEngine.Input.touches.Length == 0)
+            {
+                touchSeconds = 0;
+                hasAlreadyFired = false;
                 return;
             }
 
-            if (isFiring)
+            if (hasAlreadyFired)
                 return;
 
-            isFiring = true;
+            touchSeconds += Time.deltaTime;
 
+            if (touchSeconds < mobileMaxTouchSeconds
+                && UnityEngine.Input.touches.Length == 1
+                && UnityEngine.Input.touches[0].phase == TouchPhase.Ended
+                && UnityEngine.Input.touches[0].position.x > Screen.width / 2.0f
+                )
+            {
+                Raycast();
+                hasAlreadyFired = true;
+            }
+        }
+
+        private void Raycast()
+        {
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, distance, layerMask))
             {
                 if (hit.collider.TryGetComponent(out IInteractable interactable))

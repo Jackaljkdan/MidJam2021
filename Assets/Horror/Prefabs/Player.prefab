@@ -660,6 +660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 3
+  touchMultiplier: 0.1
   euler: {x: 0, y: 0, z: 0}
 --- !u!114 &2235897191568745551
 MonoBehaviour:
@@ -696,6 +697,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   distance: 3
+  mobileMaxTouchSeconds: 0.21
 --- !u!114 &2235897191568745537
 MonoBehaviour:
   m_ObjectHideFlags: 0
