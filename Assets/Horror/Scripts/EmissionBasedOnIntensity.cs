@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Horror
 {
@@ -21,7 +22,8 @@ namespace Horror
         private Color maxEmissionColor;
         private float maxLightIntensity;
 
-        private void Start()
+        [Inject]
+        private void Inject()
         {
             meshRenderer = GetComponent<MeshRenderer>();
             meshRenderer.material.EnableKeyword("_EMISSION");
